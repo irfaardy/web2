@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Model\SmartphoneProdusen as SP;
 
 class HomeController extends Controller
 {
@@ -25,6 +26,7 @@ class HomeController extends Controller
 
      public function landing()
     {
-        return view('landingnw');
+        $sp = SP::all();
+        return view('landingnw')->with(['sp' => $sp]);
     }
 }

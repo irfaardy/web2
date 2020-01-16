@@ -16,10 +16,10 @@ class UserSettingsController extends Controller
 		$user = Pengguna::cabangPengguna(Auth::user()->id);
 		return view('user_setting.profile')->with(['user' => $user]);
 	}
-    public function change_pwd(){
+    public function adm_change_pwd(){
     	return view('user_setting.change_pwd');
     } 
-    public function update_pwd(Request $request){
+    public function adm_update_pwd(Request $request){
     	 if(Auth::user()->password != ""){
 	    	 $validator = Validator::make($request->all(),[
 	                           'password_old' =>'required',

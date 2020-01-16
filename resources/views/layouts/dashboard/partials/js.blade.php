@@ -8,6 +8,7 @@
 <script src="{{asset('assets/dashboard/js/adminlte.min.js')}}"></script>
 <script src="{{asset('assets/pwdstr/jquery.passtrength.js')}}"></script>
 <script src="{{asset('assets/lazy-load/jquery.lazyload-any.js')}}"></script>
+
  <script type="text/javascript">
  	 
  	 $(document).ready(function($) {
@@ -24,6 +25,7 @@
         $(".alert").delay(5000).slideUp("slow", function() {
 			    $(this).alert('close');
 			});
+          $("#produsen").DataTable();
      });
 
 
@@ -34,7 +36,11 @@
 <script type="text/javascript">
 	
 </script>
+
+<script src="{{asset('assets/datatables/datatables/jquery.dataTables.js')}}"></script>
+<script src="{{asset('assets/datatables/datatables-bs4/js/dataTables.bootstrap4.js')}}"></script>
 <script src="{{asset('assets/chart.js/Chart.min.js')}}"></script>
+<script src="{{asset('assets/pace-progress/pace.min.js')}}"></script>
 <script src="{{asset('assets/pace-progress/pace.min.js')}}"></script>
 <script>
 	$(document).ajaxStart(function() { Pace.restart(); });

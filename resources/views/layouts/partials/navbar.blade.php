@@ -21,96 +21,12 @@
                                 <h3>Daftar Smartphone</h3>
                             </div>
                             <div class="row">
+                                @foreach(Produsen::get_produsen() as $p)
                                 <div class="col-xs-3 " align="left">
-                                    <a class="dropdown-item" href="#">Asus</a>
+                                    <a class="dropdown-item" href="{{route('produsen_id',['id' => $p->id])}}">{{$p->nama}}</a>
                                 </div>
-                                <div class="col-xs-3 " align="left">
-                                    <a class="dropdown-item" href="#">Samsung</a>
-                                </div>
-                                <div class="col-xs-3 " align="left">
-                                    <a class="dropdown-item" href="#">Xiaomi</a>
-                                </div>
-                                <div class="col-xs-3 " align="left">
-                                    <a class="dropdown-item" href="#">Asus</a>
-                                </div>
-                                <div class="col-xs-3 " align="left">
-                                    <a class="dropdown-item" href="#">Samsung</a>
-                                </div>
-                                <div class="col-xs-3 " align="left">
-                                    <a class="dropdown-item" href="#">Xiaomi</a>
-                                </div>
-                                <div class="col-xs-3 " align="left">
-                                    <a class="dropdown-item" href="#">Asus</a>
-                                </div>
-                                <div class="col-xs-3 " align="left">
-                                    <a class="dropdown-item" href="#">Samsung</a>
-                                </div>
-                                <div class="col-xs-3 " align="left">
-                                    <a class="dropdown-item" href="#">Xiaomi</a>
-                                </div>
-                                <div class="col-xs-3 " align="left">
-                                    <a class="dropdown-item" href="#">Asus</a>
-                                </div>
-                                <div class="col-xs-3 " align="left">
-                                    <a class="dropdown-item" href="#">Samsung</a>
-                                </div>
-                                <div class="col-xs-3 " align="left">
-                                    <a class="dropdown-item" href="#">Xiaomi</a>
-                                </div>
-                                <div class="col-xs-3 " align="left">
-                                    <a class="dropdown-item" href="#">Asus</a>
-                                </div>
-                                <div class="col-xs-3 " align="left">
-                                    <a class="dropdown-item" href="#">Samsung</a>
-                                </div>
-                                <div class="col-xs-3 " align="left">
-                                    <a class="dropdown-item" href="#">Xiaomi</a>
-                                </div>
-                                <div class="col-xs-3 " align="left">
-                                    <a class="dropdown-item" href="#">Asus</a>
-                                </div>
-                                <div class="col-xs-3 " align="left">
-                                    <a class="dropdown-item" href="#">Samsung</a>
-                                </div>
-                                <div class="col-xs-3 " align="left">
-                                    <a class="dropdown-item" href="#">Xiaomi</a>
-                                </div>
-                                <div class="col-xs-3 " align="left">
-                                    <a class="dropdown-item" href="#">Asus</a>
-                                </div>
-                                <div class="col-xs-3 " align="left">
-                                    <a class="dropdown-item" href="#">Samsung</a>
-                                </div>
-                                <div class="col-xs-3 " align="left">
-                                    <a class="dropdown-item" href="#">Xiaomi</a>
-                                </div>
-                                <div class="col-xs-3 " align="left">
-                                    <a class="dropdown-item" href="#">Asus</a>
-                                </div>
-                                <div class="col-xs-3 " align="left">
-                                    <a class="dropdown-item" href="#">Samsung</a>
-                                </div>
-                                <div class="col-xs-3 " align="left">
-                                    <a class="dropdown-item" href="#">Xiaomi</a>
-                                </div>
-                                <div class="col-xs-3 " align="left">
-                                    <a class="dropdown-item" href="#">Asus</a>
-                                </div>
-                                <div class="col-xs-3 " align="left">
-                                    <a class="dropdown-item" href="#">Samsung</a>
-                                </div>
-                                <div class="col-xs-3 " align="left">
-                                    <a class="dropdown-item" href="#">Xiaomi</a>
-                                </div>
-                                <div class="col-xs-3 " align="left">
-                                    <a class="dropdown-item" href="#">Asus</a>
-                                </div>
-                                <div class="col-xs-3 " align="left">
-                                    <a class="dropdown-item" href="#">Samsung</a>
-                                </div>
-                                <div class="col-xs-3 " align="left">
-                                    <a class="dropdown-item" href="#">Xiaomi</a>
-                                </div>
+                                @endforeach
+                                
                             </div>
                         </div>
                     </div>
