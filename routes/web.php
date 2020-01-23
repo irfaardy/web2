@@ -19,9 +19,15 @@ Auth::routes();
 Route::group(['middleware' => ['auth']], function () {
 		Route::group(['middleware' => ['admin']], function () {
 			Route::get('/admin/dashboard', 'AdminDashboard@index')->name('dashboard_admin');
-			Route::resource('/admin/smartphone', 'AdminSmartphoneCRUD');
+			Route::get('/admin/smartphone', 'AdminSmartphoneCRUD@index')->name('adm_phone');
+			Route::get('/admin/smartphone/create', 'AdminSmartphoneCRUD@create')->name('adm_phone_create');
+			Route::get('/admin/smartphone/store', 'AdminSmartphoneCRUD@store')->name('adm_phone_store');
+
 			Route::get('/admin/produsen', 'AdminSmartphoneProdusen@index')->name('adm_produsen');
+			Route::get('/admin/produsen/{id}/edit', 'AdminSmartphoneProdusen@edit')->name('adm_edit_produsen');
+			Route::get('/admin/produsen/{id}/delete', 'AdminSmartphoneProdusen@destroy')->name('adm_hapus_produsen');
 			Route::get('/admin/produsen/create', 'AdminSmartphoneProdusen@create')->name('adm_produsen_create');
+			Route::post('/admin/produsen/update', 'AdminSmartphoneProdusen@update')->name('adm_produsen_update');
 			Route::post('/admin/produsen/store', 'AdminSmartphoneProdusen@store')->name('adm_produsen_store');
 
 			Route::get('/admin/account/setting/change_password', 'UserSettingsController@adm_change_pwd')

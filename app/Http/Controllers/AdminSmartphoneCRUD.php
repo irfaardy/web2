@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Model\Smartphone;
+use App\Model\SmartphoneProdusen as SP;
 
 class AdminSmartphoneCRUD extends Controller
 {
@@ -24,7 +26,8 @@ class AdminSmartphoneCRUD extends Controller
      */
     public function create()
     {
-        //
+        $sp = SP::all();
+         return view('dashboard.crud_smartphone.forms')->with(['act' => route('adm_phone_store'),'sp' => $sp]);
     }
 
     /**

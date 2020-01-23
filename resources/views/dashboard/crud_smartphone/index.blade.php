@@ -10,7 +10,7 @@
 @endsection
 @section('content')
 <div class="pull-right">
-  <a href="#" class="btn btn-primary">Tambah Smartphone Baru</a>
+  <a href="{{route('adm_phone_create')}}" class="btn btn-primary">Tambah Smartphone Baru</a>
 
 </div>
 <hr>

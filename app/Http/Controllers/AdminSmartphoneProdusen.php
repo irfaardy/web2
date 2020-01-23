@@ -27,7 +27,8 @@ class AdminSmartphoneProdusen extends Controller
      */
     public function create()
     {
-         return view('dashboard.crud_produsen.forms');
+
+         return view('dashboard.crud_produsen.forms')->with(['act' => route('adm_produsen_store'),]);
     }
 
     /**
@@ -72,7 +73,8 @@ class AdminSmartphoneProdusen extends Controller
      */
     public function edit($id)
     {
-        //
+          $sp =  SP::where('id',$id)->first();
+           return view('dashboard.crud_produsen.forms')->with(['act' => route('adm_produsen_update'),'sp' => $sp]);
     }
 
     /**
@@ -82,9 +84,20 @@ class AdminSmartphoneProdusen extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+       
+         $validator = Validator::make($request->all(),[
+                           'nama' =>'required|max:60',
+                       ]);
+           if ($validator->fails()){
+                $error= $validator->errors()->first();
+                 return redirect()->back()->with(['message_fail' => $error])
+                                          ->withInput($request->all());
+            } 
+
+            SP::where('id',$request->id)->update(['nama' => $request->nama,'deskripsi' => $request->deskripsi,'updated_by' => Auth::user()->id]);
+            return redirect('admin/produsen')->with(['message_success' => 'Berhasil Mengubah data Produsen']);
     }
 
     /**
@@ -95,6 +108,13 @@ class AdminSmartphoneProdusen extends Controller
      */
     public function destroy($id)
     {
-        //
+       $sp = SP::where('id',$id)->first();
+
+       if($sp != null){
+         SP::where('id',$id)->delete();
+          return redirect('admin/produsen')->with(['message_success' => 'Berhasil Menghapus data Produsen']);
+       } else{
+         return redirect('admin/produsen')->with(['message_fail' => 'Produsen Tidak Ditemukan']);
+       }
     }
 }

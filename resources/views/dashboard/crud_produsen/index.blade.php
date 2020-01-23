@@ -27,8 +27,8 @@
  			<td>{{ $s->updated_at }}</td>
  			<td>{{ $s->updated_by }}</td>
  			<td>
- 				<a href="#" class="btn btn-danger"><i class="fa fa-trash"></i></a>
- 				<a href="#" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+ 				<a href="{{route('adm_hapus_produsen',['id' => $s->id])}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+ 				<a href="{{route('adm_edit_produsen',['id' => $s->id])}}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
  			</td>
  		</tr>
  		@endforeach
