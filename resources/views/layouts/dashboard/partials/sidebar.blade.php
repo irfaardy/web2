@@ -50,21 +50,21 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/admin/smartphone" class="nav-link">
+                <a href="{{route('adm_phone')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Smartphone</p>
                 </a>
               </li>
                
               <li class="nav-item">
-                <a href="/admin/produsen" class="nav-link">
+                <a href="{{route('adm_produsen')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Produsen Smartphone</p>
                 </a>
               </li>
               </li>
               <li class="nav-item">
-                <a href="/admin/article" class="nav-link">
+                <a href="{{route('adm_article')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Artikel</p>
                 </a>

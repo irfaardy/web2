@@ -15,36 +15,57 @@
 </div>
 <hr>
   <div class="row d-flex align-items-stretch">
+    @foreach($smp as $s)
             <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
               <div class="card bg-light">
                 <div class="card-header text-muted border-bottom-0">
-                  Oppo
+                 {{Produsen::getNama($s->id_merk)}}
                 </div>
                 <div class="card-body pt-0">
                   <div class="row">
                     <div class="col-7">
-                      <h2 class="lead"><b>OPPO F11</b></h2>
-                      {{ Str::limit('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                      consequat.',120)}}
+                      <h2 class="lead"><b>{{$s->nama}}</b></h2>
+                      {{ Str::limit(strip_tags($s->spesifikasi),120)}}
                     </div>
-                    <div class="col-5 text-center" style="background-image: url('https://www.91-img.com/pictures/133188-v4-oppo-f11-mobile-phone-large-1.jpg'); background-size: contain; background-repeat: no-repeat; background-position: center ;">
+                    <div class="col-5 text-center" style="background-image: url('{{route('img_smp',['ukuran' => 'small','link' => Phone::getLatestImg($s->id_ponsel)==null?null:Phone::getLatestImg($s->id_ponsel)->img_link])}}'); background-size: contain; background-repeat: no-repeat; background-position: center ;">
                    
                     </div>
                   </div>
                 </div>
                 <div class="card-footer">
                   <div class="text-right">
-                    <a href="#" class="btn btn-sm btn-danger">
+                    <a href="{{route('adm_phone_delete',['id' => $s->id_ponsel])}}" delete-this class="btn btn-sm btn-danger">
                       <i class="fas fa-trash"> </i> Hapus 
+                    </a> 
+                    <a href="{{route('adm_phone_edit',['id' => $s->id_ponsel])}}" class="btn btn-sm btn-warning">
+                      <i class="fas fa-edit"> </i> Edit 
                     </a>
-                    <a href="#" class="btn btn-sm btn-primary">
+                    <a href="{{route('adm_phone_detail',['id' => $s->id_ponsel])}}" class="btn btn-sm btn-primary">
                       <i class="fas fa-eye"></i> Lihat Detail
                     </a>
                   </div>
                 </div>
               </div>
             </div>
+           
+    @endforeach
+    <div class="col-md-12">
+      {{$smp->links()}}
+    </div>
+     <script type="text/javascript">
+            $(document).ready(function() {
+             $("[delete-this]").click(function(e) {
+                    var answer=confirm('Apakah anda ingin menghapus ini?');
+                  if(answer){
+
+                  }
+              else{
+
+                  e.preventDefault();
+                  return false;
+                  }
+             });
+            });
+            </script>
           </div>
 @endsection

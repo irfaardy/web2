@@ -1,5 +1,5 @@
 <!-- jQuery -->
-<script src="{{asset('assets/jquery/jquery.min.js')}}"></script>
+
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script> -->
 <!-- Bootstrap -->
 <script src="{{asset('assets/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
@@ -9,7 +9,7 @@
 <script src="{{asset('assets/dashboard/js/adminlte.min.js')}}"></script>
 <script src="{{asset('assets/pwdstr/jquery.passtrength.js')}}"></script>
 <script src="{{asset('assets/lazy-load/jquery.lazyload-any.js')}}"></script>
-
+  <script src="{{ asset('js/axios/axios.min.js') }}" type="text/javascript"></script>
  <script type="text/javascript">
  	 
  	 $(document).ready(function($) {
