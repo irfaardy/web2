@@ -23,12 +23,6 @@ bottom: initial;
 }
 
 
-    HTML CSS JS 
-
-    Result 
-
-EDIT ON
-
 .navbar-nav li>span {
     position: relative;
     display: block;

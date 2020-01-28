@@ -23,13 +23,29 @@
                     <label for="merk">Merk</label>
                     <select name="id_merk"  class="form-control">
                         @foreach($sp as $s)
-                         <option value="{{$s->id}}" {{$s->id == $phone->id_merk ? "selected='selected'":null}}>{{$s->nama}}</option>
+                         <option value="{{$s->id}}" {{isset($phone)?$s->id == $phone->id_merk ? "selected='selected'":null:null}}>{{$s->nama}}</option>
                          @endforeach
                     </select>
                   </div>
+                  <div class="form-group">
+                    <label for="Nama">Layar</label>
+                    <input type="text" name="display" value="{{isset($phone)?$phone->display:old('display')}}" class="form-control" id="display" placeholder="contoh: 6.5 inch Amoled">
+                  </div> 
+                  <div class="form-group">
+                    <label for="Nama">Chipset</label>
+                    <input type="text" name="chipset" value="{{isset($phone)?$phone->chipset:old('chipset')}}" class="form-control" id="chipset" placeholder="contoh: Snapdragon 845 2x3Ghz Kyro 360 Gold 6x2.5Ghz Kyro 360 Silver">
+                  </div> 
+                  <div class="form-group">
+                    <label for="Nama">RAM</label>
+                    <input type="text" name="ram" value="{{isset($phone)?$phone->ram:old('ram')}}" class="form-control" id="ram" placeholder="contoh : 4GB LDDRX4">
+                  </div>  
+                  <div class="form-group">
+                    <label for="Nama">Penyimpanan</label>
+                    <input type="text" name="storage" value="{{isset($phone)?$phone->storage:old('storage')}}" class="form-control" id="storage" placeholder="Contoh : 128GB">
+                  </div> 
  					
                   <div class="form-group">
-                    <label for="Nama">Deskripsi</label>
+                    <label for="Nama">Spesifikasi Lengkap</label>
                    <textarea class="form-control" id='description' value="" placeholder="Masukan Deskripsi" name="deskripsi">{{isset($phone)?$phone->spesifikasi:old('spesifikasi')}}</textarea>
                   </div>
                    @if(isset($phone))

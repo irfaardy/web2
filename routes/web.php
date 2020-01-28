@@ -17,8 +17,9 @@ Auth::routes();
 Route::get('/img/smartphone/{ukuran}/{link}.jpg', 'ImagesController@showImgSmart')->name('img_smp');
 Route::get('/img/article/{ukuran}/{link}.jpg', 'ImagesController@showImgArk')->name('img_ark');
 
-Route::get('/smartphone/id/{id}', 'AdminArticleCRUD@detail')->name('smartphones');
-Route::get('/artikel/detail/{id}', 'AdminArticleCRUD@detail')->name('artikel_detail');
+Route::get('/smartphone/detail/{id}', 'SmartphoneController@detail')->name('smartphone');
+Route::get('/smartphone/merk/{id}', 'SmartphoneController@merk')->name('smartphone_merk');
+Route::get('/artikel/detail/{id}', 'ArtikelController@detail')->name('artikel_detail');
 
 Route::group(['middleware' => ['auth']], function () {
 		Route::group(['middleware' => ['admin']], function () {
@@ -53,6 +54,6 @@ Route::group(['middleware' => ['auth']], function () {
 		});
 	});
 
-Route::get('/smartphone/produsen/{id}','SmartphoneController@produsen')->name('produsen_id');
+Route::get('/smartphone/merk/{id}','SmartphoneController@merk')->name('produsen_id');
 Route::get('redirect/{driver}', 'Auth\LoginController@redirectToProvider')->name('login.provider');
 Route::get('{driver}/callback', 'Auth\LoginController@handleProviderCallback')->name('login.callback');

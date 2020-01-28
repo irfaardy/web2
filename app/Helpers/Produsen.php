@@ -9,7 +9,7 @@ class Produsen
 				return SP::where('id',$id)->first();
 			} else{
 
-				return SP::all();
+				return SP::orderBy('nama','ASC')->get();
 			}
 
 	}
@@ -19,7 +19,7 @@ class Produsen
 		if($get != null){
 			$ret = $get->nama;
 			} else{
-				$ret = 'n/a';
+				$ret = '-';
 			}
 		
 

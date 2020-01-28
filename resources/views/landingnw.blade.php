@@ -26,7 +26,7 @@
                 <div class="card-footer">
                   <div class="text-right">
                     
-                    <a href="#" class="btn btn-sm btn-primary btn-block">
+                    <a href="{{route('artikel_detail',['id' => $a->id_artikel])}}" class="btn btn-sm btn-primary btn-block">
                       <i class="fas fa-eye"></i> Lihat Selengkapnya
                     </a>
                   </div>
@@ -53,7 +53,7 @@
             <p class="card-text">   
                 <b>
                 {{$s->nama}}</b></p>
-                <a href="#" class="btn btn-success btn-block">Lihat Detail</a>
+                <a href="{{route('smartphone',['id' => $s->id_ponsel])}}" class="btn btn-success btn-block">Lihat Detail</a>
           </div>
         </div>
       </div>

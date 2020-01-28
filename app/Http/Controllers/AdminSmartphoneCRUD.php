@@ -20,7 +20,7 @@ class AdminSmartphoneCRUD extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        $smp = Smartphone::select(['id as id_ponsel','nama','id_merk','spesifikasi','updated_at','updated_by'])->paginate(12);
+        $smp = Smartphone::select(['id as id_ponsel','chipset','display','storage','ram','nama','id_merk','spesifikasi','updated_at','updated_by'])->paginate(12);
         return view('dashboard.crud_smartphone.index')->with(['smp' => $smp]);
     }
 
@@ -50,6 +50,10 @@ class AdminSmartphoneCRUD extends Controller
             $validator = Validator::make($request->all(),[
                             'nama' =>'required|max:60',
                             'id_merk' =>'required|exists:tb_merk_ponsel,id',
+                            'display' =>'required|max:100',
+                            'chipset' =>'required|max:300',
+                            'ram' =>'required|max:100',
+                            'storage' =>'required|max:100',
                             'deskripsi' =>'required',
                             'img.'.$img =>'image|mimes:jpeg,gif,png|max:4000',]);
            
@@ -65,6 +69,10 @@ class AdminSmartphoneCRUD extends Controller
          Smartphone::create(['id'=>$generate,
                             'nama'=>$request->nama,
                             'id_merk'=>$request->id_merk,
+                            'display' =>$request->display,
+                            'chipset' =>$request->chipset,
+                            'ram' =>$request->ram,
+                            'storage' =>$request->storage,
                             'spesifikasi'=>$request->deskripsi,
                             'updated_by'=>Auth::user()->id,]);
          $files= $request->img;
@@ -134,7 +142,7 @@ class AdminSmartphoneCRUD extends Controller
     public function edit($id)
     {
          $sp = SP::all();
-         $phone = Smartphone::select(['id as id_ponsel','nama','id_merk','spesifikasi','updated_at','updated_by'])->where('id',$id)->first();
+         $phone = Smartphone::select(['id as id_ponsel','chipset','display','storage','ram','nama','id_merk','spesifikasi','updated_at','updated_by'])->where('id',$id)->first();
          // dd($phone);
          if($phone != null){
             return view('dashboard.crud_smartphone.forms')->with(['act' => route('adm_phone_update'),'sp' => $sp,'phone' => $phone]);
@@ -161,6 +169,10 @@ class AdminSmartphoneCRUD extends Controller
                             'nama' =>'required|max:60',
                             'id_merk' =>'required|exists:tb_merk_ponsel,id',
                             'deskripsi' =>'required',
+                             'display' =>'required|max:100',
+                            'chipset' =>'required|max:300',
+                            'ram' =>'required|max:100',
+                            'storage' =>'required|max:100',
                             'img.'.$img =>'image|mimes:jpeg,gif,png|max:4000',]);
            
         }
@@ -168,6 +180,10 @@ class AdminSmartphoneCRUD extends Controller
        } else{
                 $validator = Validator::make($request->all(),[
                             'nama' =>'required|max:60',
+                             'display' =>'required|max:100',
+                            'chipset' =>'required|max:300',
+                            'ram' =>'required|max:100',
+                            'storage' =>'required|max:100',
                             'id_merk' =>'required|exists:tb_merk_ponsel,id',
                             'deskripsi' =>'required',]);
        }
@@ -224,11 +240,17 @@ class AdminSmartphoneCRUD extends Controller
             }
           }
         }
-        Smartphone::where(['id'=>$request->id])->update(['nama'=>$request->nama,
-                            'id_merk'=>$request->id_merk,
-                            'spesifikasi'=>$request->deskripsi,
-                            'updated_by'=>Auth::user()->id,]);
-        return redirect()->back()->with(['message_success' => 'Berhasil Mengubah data Smartphone']);
+        Smartphone::where(['id'=>$request->id])
+        ->update([
+                  'nama'=>$request->nama,
+                  'id_merk'=>$request->id_merk,
+                  'display' =>$request->display,
+                  'chipset' =>$request->chipset,
+                  'ram' =>$request->ram,
+                  'storage' =>$request->storage,
+                  'spesifikasi'=>$request->deskripsi,
+                  'updated_by'=>Auth::user()->id,]);
+        return redirect()->route('adm_phone')->with(['message_success' => 'Berhasil Mengubah data Smartphone']);
 
     }
 

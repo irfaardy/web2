@@ -3,9 +3,11 @@
 <head>
 	<title>Ask Cell Home</title>
 	 <script src="{{ asset('js/app.js') }}" defer></script>
-	 <script src="{{ asset('js/jquery.slim.min.js') }}" defer></script>
-	 <script src="{{ asset('js/paralax.min.js') }}" defer></script>
+   <script src="{{ asset('js/jquery.min.js') }}"></script>
+   <link href="{{ asset('assets/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+	 <script src="{{ asset('js/parallax.min.js') }}"></script>
  	 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+   <link href="{{ asset('css/UI.css') }}" rel="stylesheet">
     <style type="text/css">
     
    </style>
@@ -171,7 +173,7 @@ ul, ol {
     </div>
 
 <!-- FOOTER -->
-<footer class="section footer-classic context-dark" style="background: #e57373;">
+<footer class="section footer-classic bg-danger context-dark" >
         <div class="container">
           <div class="row row-30">
             <div class="col-md-4 col-xl-5" style="border-right: 1px solid #FFF;">
