@@ -18,7 +18,7 @@
                       <h2 class="lead"><b>{{$a->judul}}</b></h2>
                       {{ Str::limit(strip_tags($a->deskripsi),120)}}
                     </div>
-                    <div class="col-5 text-center" style="background-image: url('{{route('img_ark',['ukuran' => 'small','link' => ARK::getLatestImg($a->id_artikel)==null?null:ARK::getLatestImg($a->id_artikel)->img_link])}}'); background-size: contain; background-repeat: no-repeat; background-position: center ;">
+                    <div class="col-5 text-center" style="background-image: url('{{route('img_ark',['ukuran' => 'original','link' => ARK::getLatestImg($a->id_artikel)==null?null:ARK::getLatestImg($a->id_artikel)->img_link])}}'); background-size: contain; background-repeat: no-repeat; background-position: center ;">
                    
                     </div>
                   </div>
@@ -39,7 +39,7 @@
     </div>
    
 <!-- Page Content -->
-<section class="py-5">
+<section class="py-12">
   <div class="container">
      <h2><span class="badge badge-danger">Smartphone Terbaru</span></h2>
     <div class="row">
@@ -48,7 +48,7 @@
       <div class="col-md-3" style="margin:5px;">
        <div class="card" style="width: 18rem;">
 
-        <div style="background-image: url('{{route('img_smp',['ukuran' => 'small','link' => Phone::getLatestImg($s->id_ponsel)==null?null:Phone::getLatestImg($s->id_ponsel)->img_link])}}');position: center; background-size: cover; min-height: 150px"></div>
+        <div style="background-image: url('{{route('img_smp',['ukuran' => 'original','link' => Phone::getLatestImg($s->id_ponsel)==null?null:Phone::getLatestImg($s->id_ponsel)->img_link])}}');position: center; background-size: cover; min-height: 150px"></div>
           <div class="card-body">
             <p class="card-text">   
                 <b>

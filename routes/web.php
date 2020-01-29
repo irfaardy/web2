@@ -17,12 +17,17 @@ Auth::routes();
 Route::get('/img/smartphone/{ukuran}/{link}.jpg', 'ImagesController@showImgSmart')->name('img_smp');
 Route::get('/img/article/{ukuran}/{link}.jpg', 'ImagesController@showImgArk')->name('img_ark');
 
+Route::get('/smartphone/search', 'SmartphoneController@search')->name('smartphone_search');
 Route::get('/smartphone/detail/{id}', 'SmartphoneController@detail')->name('smartphone');
 Route::get('/smartphone/merk/{id}', 'SmartphoneController@merk')->name('smartphone_merk');
 Route::get('/artikel/detail/{id}', 'ArtikelController@detail')->name('artikel_detail');
 
 Route::group(['middleware' => ['auth']], function () {
+	Route::post('/review/store','ReviewController@store')->name('review_store');
+	Route::post('/review/update','ReviewController@update')->name('review_update');
 		Route::group(['middleware' => ['admin']], function () {
+
+			Route::post('/review/delete','ReviewController@delete')->name('review_delete');
 			Route::get('/admin/dashboard', 'AdminDashboard@index')->name('dashboard_admin');
 			Route::get('/admin/smartphone', 'AdminSmartphoneCRUD@index')->name('adm_phone');
 			Route::get('/admin/smartphone/edit/{id}', 'AdminSmartphoneCRUD@edit')->name('adm_phone_edit');

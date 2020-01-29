@@ -6,8 +6,9 @@
    <script src="{{ asset('js/jquery.min.js') }}"></script>
    <link href="{{ asset('assets/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
 	 <script src="{{ asset('js/parallax.min.js') }}"></script>
- 	 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-   <link href="{{ asset('css/UI.css') }}" rel="stylesheet">
+ 	 <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
+   <!-- <link href="{{ asset('css/UI.css') }}" rel="stylesheet"> -->
+   <link href="{{ asset('css/material.css') }}" rel="stylesheet">
     <style type="text/css">
     
    </style>
@@ -163,17 +164,23 @@ ul, ol {
  	 </style>
 </head>
 <body>
-	
+
 @include('layouts.partials.navbar')
 
   <!--Container-->
 <div class="container" style="margin-top: 80px;">
+    @include('layouts.dashboard.partials.alerts')
+      <div class="row">
+    <div class="col-md-6">
     
+        </div>
+    </div>
+
     @yield('content')
     </div>
 
 <!-- FOOTER -->
-<footer class="section footer-classic bg-danger context-dark" >
+<footer style="margin-top: 40px;" class="section footer-classic bg-danger context-dark" >
         <div class="container">
           <div class="row row-30">
             <div class="col-md-4 col-xl-5" style="border-right: 1px solid #FFF;">

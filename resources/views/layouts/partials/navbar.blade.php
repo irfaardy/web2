@@ -5,7 +5,21 @@
         <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
+
             <ul class="navbar-nav ml-auto">
+            <ul class="nav-item">
+                <form action="{{route('smartphone_search')}}" method="GET">
+              <div class="input-group" >
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-search"></i></span>
+                </div>
+                <input name="q" autocomplete="off" type="text"  value="{{Request::get('q')}}" class="form-control" placeholder="Cari Smartphone..."> 
+               <!--  <div class="input-group-prepend">
+                  <button class="btn btn-secondary btn-raised  btn-sm">Cari</button>
+                </div> -->
+              </div>
+            </form>
+            </ul>
                 
                 <li class="nav-item dropdown dropdown-new">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

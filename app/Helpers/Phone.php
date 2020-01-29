@@ -2,6 +2,7 @@
 namespace App\Helpers;
 use App\Model\SmartphoneProdusen as SP;
 use App\Model\ImagesStorage;
+use App\Model\Review;
 
 
 class Phone
@@ -16,5 +17,13 @@ class Phone
 	 		'type' => 'SMP'])->orderBy('created_at','ASC')->first();
 	 	return $get;
 	 }
+
+	 public static function countReviewer($id){
+	 	$get = Review::where('id_ponsel',$id)->count();
+
+	 	return number_format($get);
+	 }
+
+
 
 }

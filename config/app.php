@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Jakarta',
 
     /*
     |--------------------------------------------------------------------------
@@ -230,6 +230,7 @@ return [
         'Produsen' => App\Helpers\Produsen::class,
         'Phone' => App\Helpers\Phone::class,
         'ARK' => App\Helpers\Artikel::class,
+        'Pengguna' => App\Helpers\Pengguna::class,
         'Image' => Intervention\Image\Facades\Image::class,
 
     ],

@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-<h3> Daftar Smartphone {{Produsen::getNama($id)}}</h3>
+<h3> Cari Smartphone </h3>
 <hr>
  <div class="row d-flex align-items-stretch">
     @foreach($smp as $s)
@@ -30,7 +30,7 @@
             </div>
            
     @endforeach
-     <div class="col-md-12">
+    <div class="col-md-12">
       {{$smp->links()}}
     </div>
 </div>

@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="{{asset('assets/dashboard/css/adminlte.min.css')}}">
   <link rel="stylesheet" href="{{asset('assets/pace-progress/themes/blue/pace-theme-flat-top.css')}}">
   <link rel="stylesheet" href="{{asset('assets/pwdstr/passtrength.css')}}">
+  
   <!-- Google Font: Source Sans Pro -->
   <script src="{{asset('assets/jquery/jquery.min.js')}}"></script>
   <script src="{{asset('assets/ckeditor/ckeditor.js')}}"></script>
