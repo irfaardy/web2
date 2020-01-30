@@ -168,7 +168,7 @@ ul, ol {
 @include('layouts.partials.navbar')
 
   <!--Container-->
-<div class="container" style="margin-top: 80px;">
+<div class="container" style="margin-top: 20px;">
     @include('layouts.dashboard.partials.alerts')
       <div class="row">
     <div class="col-md-6">

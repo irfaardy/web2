@@ -24,6 +24,10 @@ Route::get('/artikel/detail/{id}', 'ArtikelController@detail')->name('artikel_de
 
 Route::group(['middleware' => ['auth']], function () {
 	Route::post('/review/store','ReviewController@store')->name('review_store');
+	Route::post('/review/vote/up','VotingReviewController@up')->name('review_vote_up');
+	Route::post('/review/vote/down','VotingReviewController@down')->name('review_vote_down');
+	Route::post('/account/updatepwd','UserSettingsController@update_pwd')->name('update_pwd');
+	Route::get('/account/password','UserSettingsController@usr_change_pwd')->name('change_pwd');
 	Route::post('/review/update','ReviewController@update')->name('review_update');
 		Route::group(['middleware' => ['admin']], function () {
 
@@ -54,7 +58,7 @@ Route::group(['middleware' => ['auth']], function () {
 			Route::post('/image/delete','ImagesController@deleteIMG')->name('delete_image');
 			Route::get('/admin/account/setting/change_password', 'UserSettingsController@adm_change_pwd')
 			->name('user_change_pwd');
-			Route::post('/admin/account/setting/update_password', 'UserSettingsController@adm_update_pwd')
+			Route::post('/admin/account/setting/update_password', 'UserSettingsController@update_pwd')
 			->name('user_update_pwd');
 		});
 	});

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-danger">
+<nav class="navbar navbar-expand-lg  navbar-dark bg-danger">
     <div class="container">
         <a class="navbar-brand" href="/"><b>ASK</b>cell</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,7 +68,7 @@
                         </a>
                         @endif
 
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="{{route('change_pwd')}}">
                             {{ __('Ubah Kata Sandi') }}
                         </a>
 

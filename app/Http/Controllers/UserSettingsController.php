@@ -19,7 +19,10 @@ class UserSettingsController extends Controller
     public function adm_change_pwd(){
     	return view('user_setting.change_pwd');
     } 
-    public function adm_update_pwd(Request $request){
+     public function usr_change_pwd(){
+    	return view('public.user_password');
+    } 
+    public function update_pwd(Request $request){
     	 if(Auth::user()->password != ""){
 	    	 $validator = Validator::make($request->all(),[
 	                           'password_old' =>'required',

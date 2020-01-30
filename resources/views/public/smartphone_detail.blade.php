@@ -146,6 +146,7 @@
 								</div>
 								<div class="col-md-6">
 									<div style="float: right;">
+										@if(Auth::check())
 										@if(Auth::user()->id == $r->id_user || Auth::user()->level == 4)
 										<a href="#editReview" data-toggle="modal" data-target="#edit_review-{{$r->id_ulasan}}" class="btn btn-raised btn-sm btn-primary"><i class="fa fa-edit"></i> Ubah</a>
 										
@@ -213,6 +214,7 @@
 										</div>
 										@endif
 										@endif
+										@endif
 									</div>
 								</div>
 								<div class="col-md-12">
@@ -222,10 +224,26 @@
 									<h4>{{$r->judul}}</h4>
 									{{$r->deskripsi}}
 								</div>
-								@if(strtotime($r->updated_at) > strtotime($r->created_at))
+								<div class="col-md-12"> 
+									@if(Auth::check())
+									@if(Phone::checkReview($r->id,"up"))
+										<button type="button" icon_change="#up_arrow-{{$r->id}}" vote  route="{{route('review_vote_up')}}" id_review="{{$r->id}}" point_text="#point-{{$r->id}}"  id="up-{{$r->id}}" class="btn btn-success btn-raised"><i id="up_arrow-{{$r->id}}" class="fa fa-arrow-up"></i></button>
+									@else
+										<button type="button" icon_change="#up_arrow-{{$r->id}}" vote  route="{{route('review_vote_up')}}" id_review="{{$r->id}}" point_text="#point-{{$r->id}}"  id="up-{{$r->id}}" class="btn btn-success"><i id="up_arrow-{{$r->id}}" class="fa fa-arrow-up"></i></button>
+									@endif
+									@if(Phone::checkReview($r->id,"down"))
+									<button type="button" icon_change="#down_arrow-{{$r->id}}" vote route="{{route('review_vote_down')}}" id_review="{{$r->id}}" point_text="#point-{{$r->id}}"  id="down-{{$r->id}}" class="btn btn-danger btn-raised"><i id="down_arrow-{{$r->id}}" class="fa fa-arrow-down"></i></button>
+									@else
+									<button type="button" icon_change="#down_arrow-{{$r->id}}" vote route="{{route('review_vote_down')}}" point_text="#point-{{$r->id}}" id_review="{{$r->id}}" id="down-{{$r->id}}" class="btn btn-danger"><i id="down_arrow-{{$r->id}}" class="fa fa-arrow-down"></i></button>
+									@endif
+									@endif
+									&nbsp;&nbsp;<span class="badge badge-info"> <i class="fa fa-arrow-up"></i> <i class="fa fa-arrow-down"></i> <span  id="point-{{$r->id}}">{{ Phone::countReviewVote($r->id) }}</span></span>
+								</div>
+								<!-- {{$r->updated_at}} -->
+								<!-- @if($r->updated_at == $r->created_at)
 								<div class="col-md-12"> <span class="badge badge-info">Telah diubah oleh {{Pengguna::getNama($r->updated_by)}}  {{ \Carbon\Carbon::parse($r->updated_at)->locale('id')->diffForHumans()}}
 								</div>
-								@endif
+								@endif -->
 							</div>
 							
 						</div>
@@ -250,4 +268,88 @@
 </div>
 </div>
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+      
+      $("[vote]").click(function(e) {
+    
+        e.preventDefault();
+        var r = $(this).attr('route');
+        var id = $(this).attr('id_review');
+        var ini = $(this);
+        var spin = "fa fa-spinner fa-spin";
+        var icon =  $(this).attr('icon_change');
+        var pointText =  $(this).attr('point_text');
+        $(icon).attr('class','');
+		$(icon).addClass(spin);
+        $(this).prop("disabled"), 
+        axios.post(r, {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+          },
+        id_review: id,
+        }).then(function(e) {
+          console.log("console 1:"+e);
+        // $(loader).fadeOut();
+       
+        if(e.data.error == false){
+        	switch(e.data.type){
+        		case"up":
+        			$('#down-'+id).attr('class','');
+					$('#down-'+id).addClass('btn btn-danger');
+					ini.attr('class','');
+					ini.addClass('btn btn-success  btn-raised');
+					$(icon).attr('class','');
+			 		 $(icon).addClass("fa fa-arrow-up");
+        		break;
+        		case"upcancel":
+        			$('#down-'+id).attr('class','');
+					$('#down-'+id).addClass('btn btn-danger');
+					ini.attr('class','');
+					ini.addClass('btn btn-success');
+					$(icon).attr('class','');
+			 		$(icon).addClass("fa fa-arrow-up");
+        		break;
+        		case"down":
+        			$('#up-'+id).attr('class','');
+					$('#up-'+id).addClass('btn btn-success');
+					ini.attr('class','');
+					ini.addClass('btn btn-danger btn-raised');
+					$(icon).attr('class','');
+			 		 $(icon).addClass("fa fa-arrow-down");
+        		break;
+        		case"downcancel":
+        			$('#up-'+id).attr('class','');
+					$('#up-'+id).addClass('btn btn-success');
+					ini.attr('class','');
+					ini.addClass('btn btn-danger');
+					$(icon).attr('class','');
+			 		$(icon).addClass("fa fa-arrow-down");
+        		break;
+        		default:
+        		 // alert('t')
+        		 break;
+        	}
+        	$(pointText).text(e.data.total);
+        	  
+        } else{
+          alert(e.data.message);
+        }
+        
+        }).catch(function(e) {
+          if(e == "Error: Request failed with status code 401"){
+            alert("Login dahulu untuk melakukan tindakan ini");
+          }
+          // cekKoneksi(r,'Internal server error');
+          // $(loader).hide();
+          
+        });
+        return true;
+     
+      
+    });
+    });
+</script>
 @endsection

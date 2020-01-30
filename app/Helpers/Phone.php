@@ -3,6 +3,8 @@ namespace App\Helpers;
 use App\Model\SmartphoneProdusen as SP;
 use App\Model\ImagesStorage;
 use App\Model\Review;
+use App\Model\VotingReview as VR;
+use Auth;
 
 
 class Phone
@@ -23,6 +25,32 @@ class Phone
 
 	 	return number_format($get);
 	 }
+
+	 public static function countReviewVote($id_review){
+	 	 $sum = VR::where('review_id',$id_review)->sum('vote_point');
+
+     	 return $sum;
+	 }
+
+	  public static function checkReview($id_review,$type){
+	  	if($type == 'down'){
+	 	 $cek = VR::where(['user_id' => Auth::user()->id,'review_id' => $id_review,'vote_point' => -1])->first();
+	 	 if($cek != null){
+	 	 	$ret = true;
+	 	 } else {
+	 	 	$ret = false;
+	 	 }
+	 	} else 	if($type == 'up'){
+     	  $cek = VR::where(['user_id' => Auth::user()->id,'review_id' => $id_review,'vote_point' => 1])->first();
+     	   if($cek != null){
+	 	 	$ret = true;
+		 	 } else {
+		 	 	$ret = false;
+		 	 }
+	 	}
+	 	return $ret;
+	 	}
+	 
 
 
 
