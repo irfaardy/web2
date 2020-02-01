@@ -40,7 +40,7 @@
                     <a href="{{route('adm_phone_edit',['id' => $s->id_ponsel])}}" class="btn btn-sm btn-warning">
                       <i class="fas fa-edit"> </i> Edit 
                     </a>
-                    <a href="{{route('adm_phone_detail',['id' => $s->id_ponsel])}}" class="btn btn-sm btn-primary">
+                    <a target="_blank" href="{{route('smartphone',['id' => $s->id_ponsel])}}" class="btn btn-sm btn-primary">
                       <i class="fas fa-eye"></i> Lihat Detail
                     </a>
                   </div>

@@ -2,6 +2,7 @@
   <link href="{{ asset('assets/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
   <!-- IonIcons -->
   <link rel="stylesheet" href="{{asset('assets/datatables/datatables-bs4/css/dataTables.bootstrap4.css')}}">
+  <link href="{{ asset('assets/chart.js/Chart.min.css') }}" rel="stylesheet">
   <!-- <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> -->
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('assets/dashboard/css/adminlte.min.css')}}">
@@ -11,5 +12,7 @@
   <!-- Google Font: Source Sans Pro -->
   <script src="{{asset('assets/jquery/jquery.min.js')}}"></script>
   <script src="{{asset('assets/ckeditor/ckeditor.js')}}"></script>
+  
+<script src="{{asset('assets/chart.js/Chart.min.js')}}"></script>
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   

@@ -40,7 +40,7 @@
                     <a href="{{route('adm_artikel_edit',['id' => $a->id_artikel])}}" class="btn btn-sm btn-warning">
                       <i class="fas fa-edit"> </i> Edit 
                     </a>
-                    <a href="{{route('adm_artikel_detail',['id' => $a->id_artikel])}}" class="btn btn-sm btn-primary">
+                    <a href="{{route('artikel_detail',['id' => $a->id_artikel])}}" class="btn btn-sm btn-primary">
                       <i class="fas fa-eye"></i> Lihat Detail
                     </a>
                   </div>

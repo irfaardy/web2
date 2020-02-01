@@ -25,7 +25,7 @@
  			<td>{{ $s->nama }}</td>
  			<td>{{ $s->deskripsi }}</td>
  			<td>{{ $s->updated_at }}</td>
- 			<td>{{ $s->updated_by }}</td>
+ 			<td>{{ Pengguna::getNama($s->updated_by) }}</td>
  			<td>
  				<a href="{{route('adm_hapus_produsen',['id' => $s->id])}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
  				<a href="{{route('adm_edit_produsen',['id' => $s->id])}}" class="btn btn-warning"><i class="fa fa-edit"></i></a>

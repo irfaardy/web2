@@ -47,7 +47,7 @@ class AdminArticleCRUD extends Controller
             $validator = Validator::make($request->all(),[
                             'judul' =>'required|max:60',
                             'deskripsi' =>'required',
-                            'id' => 'exist:tb_artikel,id_artikel',
+                            'id' => 'exists:tb_artikel,id_artikel',
                             'img.'.$img =>'image|mimes:jpeg,gif,png|max:4000',]);
            
         }
@@ -55,7 +55,7 @@ class AdminArticleCRUD extends Controller
        } else{
                 $validator = Validator::make($request->all(),[
                             'judul' =>'required|max:60',
-                            'id' => 'exist:tb_artikel,id_artikel',
+                            'id' => 'exists:tb_artikel,id_artikel',
                             'deskripsi' =>'required',]);
        }
 
